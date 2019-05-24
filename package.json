@@ -1,0 +1,11 @@
+{
+  "name": "react-native-template-ts-redux",
+  "version": "0.0.3",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
