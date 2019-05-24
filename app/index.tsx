@@ -6,44 +6,72 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, ViewStyle, StatusBar, Text } from 'react-native';
+// 引入react-redux
+import { Provider } from 'react-redux';
+// 引入store文件
+import { store } from './store';
+import HomeIndex from './containers/HomeIndex';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+declare const global: any;
+if (!__DEV__) {
+  // 去掉console
+  global.console = {
+    log: () => {},
+    info: () => {},
+    error: () => {},
+    warn: () => {},
+    group: () => {},
+    groupEnd: () => {},
+    groupCollapsed: () => {},
+  };
+}
 
-type Props = {};
-export default class App extends Component<Props> {
+interface IAppProps {}
+interface IAppState {
+}
+
+const initialProgress = 0.1;
+
+class App extends Component<IAppProps, IAppState> {
+
+  constructor(props: IAppProps) {
+    super(props);
+    this.state = {
+      initialized: true,
+      modalVisible: false,
+      isMandatory: false,
+      progress: initialProgress,
+    };
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Provider store={store}>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+          <View style={styles.container}>
+            <StatusBar
+              translucent
+              backgroundColor={'transparent'}
+              showHideTransition={'fade'}
+              barStyle={'light-content'}
+            />
+           <Text>HelloWorld Hello</Text>
+           <HomeIndex />
+          </View>
+        {/* </PersistGate> */}
+      </Provider>
     );
   }
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  } as ViewStyle,
 });
