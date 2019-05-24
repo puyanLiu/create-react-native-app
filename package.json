@@ -1,9 +1,13 @@
 {
   "name": "react-native-template-ts-redux",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "app/**/*.{ts,tsx}": "tslint -c tslint.json"
   },
   "jest": {
     "preset": "react-native"
