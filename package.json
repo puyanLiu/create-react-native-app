@@ -9,6 +9,21 @@
   "lint-staged": {
     "app/**/*.{ts,tsx}": "tslint -c tslint.json"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puyanLiu/react-native-template-ts.git"
+  },
+  "keywords": [
+    "react-native",
+    "TypeScript",
+    "Redux"
+  ],
+  "author": "ITGirl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/puyanLiu/react-native-template-ts/issues"
+  },
+  "homepage": "https://github.com/puyanLiu/react-native-template-ts#readme",
   "jest": {
     "preset": "react-native"
   }
